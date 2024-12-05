@@ -11,14 +11,12 @@ This script extracts **Critical CSS** (the CSS used in the first viewport) from 
 - **Better Performance**: By focusing on the most-used CSS, we avoid loading unnecessary styles, saving bandwidth and reducing page load times.
 
 ### How It Works:
-1. **Critical Rendering Path**:
-   - Identifies the styles required to render the **above-the-fold** content.
-   - Extracts only the CSS used in the first viewport.
-2. **Coverage API**:
-   - Uses the browser's **Coverage API** to differentiate between used and unused CSS.
-3. **Inline Critical CSS**:
-   - The extracted CSS can later be inlined into the HTML file for optimal performance.
-
+1. **Identify Stylesheets**: The script iterates over document.styleSheets to access all stylesheets loaded on the page.
+2. **Check Rules for Elements in Viewport**: For each rule:
+   - It finds all elements matching the selector.
+   - Checks if the element is visible in the viewport.
+   - Verifies if the rule is applied to the element.
+3. **Collect and Save Critical CSS**:It saves only the CSS rules from external stylesheets that are used for the visible viewport.
 ---
 
 ## **Setup Instructions**
